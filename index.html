@@ -1021,11 +1021,28 @@ National Institute of Engineering & Technology (NIET)</p>
         }
 
         // Form Submit Handler
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            showToast("Thank you! Message sent successfully.");
-            event.target.reset();
-        }
+function handleFormSubmit(event) {
+    event.preventDefault();
+
+    // আপনার দেওয়া গুগল অ্যাপস স্ক্রিপ্ট URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzQK4GRfK94Ol_YS6YIL4kthiZW3aWG0hgxbnOxsW9sr3Z7CuFzDrk8cVmQY1ZhFjc/exec'; 
+    const form = event.target;
+
+    fetch(scriptURL, { 
+        method: 'POST', 
+        body: new FormData(form)
+    })
+    .then(response => {
+        showToast("Message sent successfully!");
+        form.reset();
+
+        // মেসেজ সাবমিট হওয়ার সাথে সাথেই মোবাইল ফোন ডায়ালারে কল ওপেন হবে
+        window.location.href = "tel:+8801700000000";
+    })
+    .catch(error => {
+        showToast("Error sending message!", "fa-solid fa-triangle-exclamation text-pink-500");
+    });
+}
 
         // Toast Notification Helper
         function showToast(message, iconClass = "fa-solid fa-circle-check text-cyan-400") {
