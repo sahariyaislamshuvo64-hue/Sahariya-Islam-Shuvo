@@ -1,1 +1,1047 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahariya Islam Shuvo | Personal Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
 
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#0284c7',
+                            cyan: '#06b6d4',
+                            pink: '#ec4899',
+                            purple: '#a855f7',
+                            dark: '#0b0f19'
+                        }
+                    },
+                    fontFamily: {
+                        outfit: ['Outfit', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #070913;
+            color: #f1f5f9;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        /* Ambient Dynamic Background Gradients */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.45;
+            animation: floatOrb 18s ease-in-out infinite alternate;
+        }
+
+        .orb-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, #0284c7, transparent 70%); }
+        .orb-2 { bottom: -10%; right: -10%; width: 45vw; height: 45vw; background: radial-gradient(circle, #7c3aed, transparent 70%); }
+        .orb-3 { top: 40%; left: 35%; width: 35vw; height: 35vw; background: radial-gradient(circle, #ec4899, transparent 70%); animation-delay: -6s; }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(40px, -30px) scale(1.08); }
+            100% { transform: translate(-30px, 40px) scale(0.95); }
+        }
+
+        /* Standard Liquid Glass */
+        .liquid-card {
+            background: rgba(15, 23, 42, 0.55);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .liquid-card:hover {
+            border-color: rgba(6, 182, 212, 0.4);
+            box-shadow: 0 12px 36px rgba(6, 182, 212, 0.15);
+        }
+
+        /* Custom Liquid Glass Buttons */
+        .liquid-glass-btn {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.25), 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .liquid-glass-btn:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(6, 182, 212, 0.5);
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Theme Specific Adjustments */
+        /* Theme 1: Liquid Glass (Default) */
+        body.theme-liquid {
+            background-color: #070913;
+        }
+
+        /* Theme 2: Cyberpunk */
+        body.theme-cyber {
+            background-color: #05040a;
+        }
+        body.theme-cyber .liquid-card {
+            background: rgba(18, 10, 28, 0.7);
+            border: 1px solid rgba(236, 72, 153, 0.35);
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.15);
+        }
+        body.theme-cyber .liquid-card:hover {
+            border-color: rgba(236, 72, 153, 0.8);
+            box-shadow: 0 0 25px rgba(236, 72, 153, 0.35);
+        }
+
+        /* Theme 3: Glassmorphism */
+        body.theme-glass {
+            background-color: #0f172a;
+        }
+        body.theme-glass .liquid-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        /* Typewriter text dynamic transition */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 0.8s infinite;
+            color: #06b6d4;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #070913; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #06b6d4; }
+    </style>
+</head>
+<body class="theme-liquid relative min-h-screen text-slate-100">
+
+    <!-- Ambient Floating Orbs (Natural Background Depth) -->
+    <div class="ambient-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Fixed Top Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80 px-4 py-3 transition-all duration-300">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            
+            <!-- Left Header Profile (Customized as per screenshot design) -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('home')">
+                <div class="relative w-10 h-10 rounded-xl overflow-hidden border border-cyan-500/40 p-0.5 shadow-md">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" 
+                         alt="Sahariya Islam Shuvo" 
+                         class="w-full h-full object-cover rounded-lg"
+                         onerror="this.src='https://placehold.co/100x100/101827/06b6d4?text=SIS'">
+                    <span class="absolute bottom-0.5 right-0.5 w-2.5 h-2.5 bg-emerald-500 border border-slate-900 rounded-full"></span>
+                </div>
+                <div>
+                    <h1 class="font-outfit text-base sm:text-lg font-bold tracking-wide text-white flex items-center gap-1.5">
+                        Sahariya Islam Shuvo
+                        <i class="fa-solid fa-circle-check text-cyan-400 text-xs"></i>
+                    </h1>
+                    <p class="text-xs text-slate-400 font-mono hidden sm:block">shuvo.com.bd</p>
+                </div>
+            </div>
+
+            <!-- Right Controls: 3 Themes Toggle & Side Menu Button -->
+            <div class="flex items-center space-x-3">
+                <!-- Theme Category Selector -->
+                <div class="hidden sm:flex bg-slate-900/90 p-1 rounded-xl border border-white/10 text-xs font-medium">
+                    <button onclick="setTheme('liquid')" id="btn-liquid" class="px-3 py-1.5 rounded-lg transition-all bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-semibold">Liquid Glass</button>
+                    <button onclick="setTheme('cyber')" id="btn-cyber" class="px-3 py-1.5 rounded-lg transition-all text-slate-400 hover:text-white">Cyberpunk</button>
+                    <button onclick="setTheme('glass')" id="btn-glass" class="px-3 py-1.5 rounded-lg transition-all text-slate-400 hover:text-white">Glassmorphism</button>
+                </div>
+
+                <!-- 3-Line Hamburger Menu Toggle Button -->
+                <button id="menu-toggle" onclick="toggleMenu()" aria-label="Toggle Menu" class="p-2.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-cyan-500/30 text-cyan-400 focus:outline-none transition-all shadow-md">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Side Drawer Navigation Modal (Opens on 3-Line Button Click) -->
+    <div id="side-drawer" class="fixed inset-y-0 right-0 w-full sm:w-80 bg-slate-950/95 backdrop-blur-2xl border-l border-cyan-500/20 z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between shadow-2xl">
+        <div class="p-6">
+            <!-- Header Inside Side Menu -->
+            <div class="flex items-center justify-between border-b border-white/10 pb-5 mb-6">
+                <div class="flex items-center space-x-3">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" 
+                         alt="Sahariya Islam Shuvo" 
+                         class="w-12 h-12 rounded-xl border border-cyan-400/50 object-cover"
+                         onerror="this.src='https://placehold.co/100x100/101827/06b6d4?text=SIS'">
+                    <div>
+                        <h2 class="font-outfit font-bold text-white text-base">Sahariya Islam Shuvo</h2>
+                        <span class="text-xs text-cyan-400 font-mono">Full Stack & Field Tech</span>
+                    </div>
+                </div>
+                <button onclick="toggleMenu()" class="text-slate-400 hover:text-white text-xl p-1">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Theme Switcher for Mobile Drawer View -->
+            <div class="sm:hidden mb-6">
+                <p class="text-xs uppercase text-slate-400 font-mono mb-2">Category Theme</p>
+                <div class="grid grid-cols-3 gap-1 bg-slate-900 p-1 rounded-xl border border-white/10 text-xs">
+                    <button onclick="setTheme('liquid')" class="py-1.5 rounded-lg text-center font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">Liquid</button>
+                    <button onclick="setTheme('cyber')" class="py-1.5 rounded-lg text-center text-slate-400 hover:text-white">Cyber</button>
+                    <button onclick="setTheme('glass')" class="py-1.5 rounded-lg text-center text-slate-400 hover:text-white">Glass</button>
+                </div>
+            </div>
+
+            <!-- Side Drawer Nav Links -->
+            <nav class="space-y-1.5">
+                <button onclick="switchTab('home')" class="nav-btn w-full text-left px-4 py-3 rounded-xl flex items-center space-x-3 transition-all hover:bg-cyan-500/10 hover:text-cyan-400 font-medium text-slate-200">
+                    <i class="fa-solid fa-house text-cyan-400 w-5"></i>
+                    <span>Home Page</span>
+                </button>
+                <button onclick="switchTab('about')" class="nav-btn w-full text-left px-4 py-3 rounded-xl flex items-center space-x-3 transition-all hover:bg-cyan-500/10 hover:text-cyan-400 font-medium text-slate-200">
+                    <i class="fa-solid fa-user text-cyan-400 w-5"></i>
+                    <span>About Me</span>
+                </button>
+                <button onclick="switchTab('education')" class="nav-btn w-full text-left px-4 py-3 rounded-xl flex items-center space-x-3 transition-all hover:bg-cyan-500/10 hover:text-cyan-400 font-medium text-slate-200">
+                    <i class="fa-solid fa-graduation-cap text-cyan-400 w-5"></i>
+                    <span>Educational Info</span>
+                </button>
+                <button onclick="switchTab('gallery')" class="nav-btn w-full text-left px-4 py-3 rounded-xl flex items-center space-x-3 transition-all hover:bg-cyan-500/10 hover:text-cyan-400 font-medium text-slate-200">
+                    <i class="fa-solid fa-images text-cyan-400 w-5"></i>
+                    <span>Photo Gallery</span>
+                </button>
+                <button onclick="switchTab('cv')" class="nav-btn w-full text-left px-4 py-3 rounded-xl flex items-center space-x-3 transition-all hover:bg-cyan-500/10 hover:text-cyan-400 font-medium text-slate-200">
+                    <i class="fa-solid fa-file-invoice text-cyan-400 w-5"></i>
+                    <span>CV / Resume</span>
+                </button>
+                <button onclick="switchTab('contact')" class="nav-btn w-full text-left px-4 py-3 rounded-xl flex items-center space-x-3 transition-all hover:bg-cyan-500/10 hover:text-cyan-400 font-medium text-slate-200">
+                    <i class="fa-solid fa-envelope text-cyan-400 w-5"></i>
+                    <span>Contact Me</span>
+                </button>
+            </nav>
+        </div>
+
+        <!-- Social Buttons Bottom of Drawer -->
+        <div class="p-6 border-t border-white/10 bg-slate-900/50">
+            <p class="text-xs text-slate-400 text-center mb-3 font-mono">Connect Directly</p>
+            <div class="flex justify-center space-x-3">
+                <a href="https://facebook.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl liquid-glass-btn flex items-center justify-center text-blue-400 hover:text-white">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl liquid-glass-btn flex items-center justify-center text-pink-400 hover:text-white">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/8801700000000" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl liquid-glass-btn flex items-center justify-center text-emerald-400 hover:text-white">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="drawer-backdrop" onclick="toggleMenu()" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 hidden transition-opacity duration-300"></div>
+
+    <!-- MAIN CONTAINER -->
+    <main class="pt-24 pb-16 px-4 sm:px-6 max-w-7xl mx-auto min-h-screen">
+
+        <!-- ================= HOME TAB PAGE ================= -->
+        <div id="tab-home" class="tab-content block space-y-16">
+            
+            <!-- Hero / Profile Section Card -->
+            <section class="liquid-card rounded-3xl p-6 sm:p-10 border border-white/15 relative overflow-hidden">
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10">
+                    
+                    <!-- Profile Picture Frame -->
+                    <div class="relative group">
+                        <div class="w-44 h-44 sm:w-56 sm:h-56 rounded-3xl p-1 bg-gradient-to-tr from-cyan-500 via-purple-500 to-pink-500 shadow-xl transition-transform duration-500 group-hover:scale-105">
+                            <div class="w-full h-full bg-slate-950 rounded-[22px] overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" 
+                                     alt="Sahariya Islam Shuvo" 
+                                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                     onerror="this.src='https://placehold.co/400x400/101827/06b6d4?text=Sahariya+Shuvo'">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Intro Info & Rotating Typewriter Text -->
+                    <div class="flex-1 text-center md:text-left space-y-4">
+                        <span class="inline-block px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono font-semibold">
+                            Full Stack Web Developer & Field Researcher
+                        </span>
+                        
+                        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight font-outfit text-white">
+                            Hi, This Is <span class="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Sahariya Islam Shuvo</span>
+                        </h1>
+
+                        <!-- Automatic Typewriter / Rotating Text (Changes 1 line every 2s) -->
+                        <div class="h-10 sm:h-12 flex items-center justify-center md:justify-start">
+                            <p class="text-lg sm:text-2xl font-semibold text-slate-200 font-mono">
+                                <span id="rotating-text" class="typing-cursor text-cyan-400">Web Developer & UI/UX Enthusiast</span>
+                            </p>
+                        </div>
+
+                        <!-- Short Caption -->
+                        <p class="text-slate-300 text-sm sm:text-base max-w-2xl leading-relaxed">
+                            Crafting high-performance digital applications, UI/UX designs, and carrying out empirical field research across Bangladesh. Focused on sleek interface dynamics and technology exploration.
+                        </p>
+
+                        <!-- Call To Action Buttons -->
+                        <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2">
+                            <button onclick="switchTab('cv')" class="liquid-glass-btn px-6 py-3 rounded-2xl bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-400/50 text-white font-semibold flex items-center gap-2 text-sm">
+                                <i class="fa-solid fa-file-arrow-down text-cyan-400"></i>
+                                <span>View & Download CV</span>
+                            </button>
+
+                            <button onclick="switchTab('contact')" class="liquid-glass-btn px-6 py-3 rounded-2xl text-slate-300 hover:text-white text-sm font-semibold flex items-center gap-2">
+                                <i class="fa-solid fa-paper-plane text-pink-400"></i>
+                                <span>Contact Me</span>
+                            </button>
+                        </div>
+
+                        <!-- Unique Liquid Glass Social Buttons -->
+                        <div class="pt-4 flex items-center justify-center md:justify-start gap-3">
+                            <span class="text-xs font-mono text-slate-400 uppercase tracking-wider mr-2">Profiles:</span>
+                            <a href="https://facebook.com" target="_blank" rel="noopener" class="w-11 h-11 rounded-2xl liquid-glass-btn flex items-center justify-center text-blue-400 hover:text-white transition-all">
+                                <i class="fa-brands fa-facebook-f text-lg"></i>
+                            </a>
+                            <a href="https://instagram.com" target="_blank" rel="noopener" class="w-11 h-11 rounded-2xl liquid-glass-btn flex items-center justify-center text-pink-400 hover:text-white transition-all">
+                                <i class="fa-brands fa-instagram text-lg"></i>
+                            </a>
+                            <a href="https://wa.me/8801700000000" target="_blank" rel="noopener" class="w-11 h-11 rounded-2xl liquid-glass-btn flex items-center justify-center text-emerald-400 hover:text-white transition-all">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Work Experience & Research Companies Section -->
+            <section class="space-y-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h2 class="text-2xl font-bold font-outfit text-white tracking-wide">Work Experience & Research Affiliations</h2>
+                        <p class="text-xs text-slate-400 font-mono">Organizations where I have contributed technical & research expertise</p>
+                    </div>
+                    <div class="h-0.5 flex-1 mx-6 bg-gradient-to-r from-cyan-500/40 to-transparent hidden sm:block"></div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Luminaries Research Ltd -->
+                    <div class="liquid-card rounded-2xl p-6 border border-white/10 flex flex-col justify-between group">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-cyan-950/80 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xl font-bold">
+                                LRL
+                            </div>
+                            <span class="text-xs font-mono text-cyan-300 bg-cyan-950/60 px-2.5 py-1 rounded-full border border-cyan-500/20">2023 - Present</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-lg group-hover:text-cyan-400 transition-colors">Luminaries Research Ltd</h3>
+                            <p class="text-xs font-mono text-cyan-300 mb-2">Lead Field & Data Specialist</p>
+                            <p class="text-xs text-slate-300">Managing empirical data collection, technical validation, and field research implementation.</p>
+                        </div>
+                    </div>
+
+                    <!-- Insight Research Ltd -->
+                    <div class="liquid-card rounded-2xl p-6 border border-white/10 flex flex-col justify-between group">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 text-xl font-bold">
+                                IRL
+                            </div>
+                            <span class="text-xs font-mono text-purple-300 bg-purple-950/60 px-2.5 py-1 rounded-full border border-purple-500/20">2022 - 2023</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-lg group-hover:text-purple-400 transition-colors">Insight Research Ltd</h3>
+                            <p class="text-xs font-mono text-purple-300 mb-2">Senior Web & Survey Specialist</p>
+                            <p class="text-xs text-slate-300">Formulated digital survey structures and dynamic frontend reporting dashboards.</p>
+                        </div>
+                    </div>
+
+                    <!-- Arrowhead Research Ltd -->
+                    <div class="liquid-card rounded-2xl p-6 border border-white/10 flex flex-col justify-between group">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-pink-950/80 border border-pink-500/30 flex items-center justify-center text-pink-400 text-xl font-bold">
+                                ARL
+                            </div>
+                            <span class="text-xs font-mono text-pink-300 bg-pink-950/60 px-2.5 py-1 rounded-full border border-pink-500/20">2022 - 2022</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-lg group-hover:text-pink-400 transition-colors">Arrowhead Research Ltd</h3>
+                            <p class="text-xs font-mono text-pink-300 mb-2">Field Operations Coordinator</p>
+                            <p class="text-xs text-slate-300">Coordinated cross-district research logistics and digital data pipelines.</p>
+                        </div>
+                    </div>
+
+                    <!-- IRC Research Ltd -->
+                    <div class="liquid-card rounded-2xl p-6 border border-white/10 flex flex-col justify-between group">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-950/80 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xl font-bold">
+                                IRC
+                            </div>
+                            <span class="text-xs font-mono text-emerald-300 bg-emerald-950/60 px-2.5 py-1 rounded-full border border-emerald-500/20">2021 - 2022</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-lg group-hover:text-emerald-400 transition-colors">IRC Research Ltd</h3>
+                            <p class="text-xs font-mono text-emerald-300 mb-2">Technical Web Developer</p>
+                            <p class="text-xs text-slate-300">Developed responsive web portals and automated reporting tools.</p>
+                        </div>
+                    </div>
+
+                    <!-- GRM Research Ltd -->
+                    <div class="liquid-card rounded-2xl p-6 border border-white/10 flex flex-col justify-between group">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-amber-950/80 border border-amber-500/30 flex items-center justify-center text-amber-400 text-xl font-bold">
+                                GRM
+                            </div>
+                            <span class="text-xs font-mono text-amber-300 bg-amber-950/60 px-2.5 py-1 rounded-full border border-amber-500/20">2020 - 2021</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-lg group-hover:text-amber-400 transition-colors">GRM Research Ltd</h3>
+                            <p class="text-xs font-mono text-amber-300 mb-2">Research Associate</p>
+                            <p class="text-xs text-slate-300">Analyzed field findings and assisted in tech platform maintenance.</p>
+                        </div>
+                    </div>
+
+                    <!-- NSearch Research -->
+                    <div class="liquid-card rounded-2xl p-6 border border-white/10 flex flex-col justify-between group">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-blue-950/80 border border-blue-500/30 flex items-center justify-center text-blue-400 text-xl font-bold">
+                                NSR
+                            </div>
+                            <span class="text-xs font-mono text-blue-300 bg-blue-950/60 px-2.5 py-1 rounded-full border border-blue-500/20">2020</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-lg group-hover:text-blue-400 transition-colors">NSearch Research</h3>
+                            <p class="text-xs font-mono text-blue-300 mb-2">Field Executive</p>
+                            <p class="text-xs text-slate-300">Conducted regional demographic studies and interactive client interviews.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Where I've Travelled Section -->
+            <section class="space-y-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h2 class="text-2xl font-bold font-outfit text-white tracking-wide">Travel Destinations Across Bangladesh</h2>
+                        <p class="text-xs text-slate-400 font-mono">Exploring natural landscapes, sea beaches, and hill tracts</p>
+                    </div>
+                    <div class="h-0.5 flex-1 mx-6 bg-gradient-to-r from-pink-500/40 to-transparent hidden sm:block"></div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Travel Spot 1: Cox's Bazar -->
+                    <div class="liquid-card rounded-2xl overflow-hidden border border-white/10 group">
+                        <div class="h-48 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Cox's Bazar" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <span class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-mono text-cyan-300 border border-cyan-400/30">
+                                <i class="fa-solid fa-location-dot text-cyan-400 mr-1"></i> Cox's Bazar
+                            </span>
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <h3 class="text-lg font-bold text-white">World's Longest Sea Beach</h3>
+                            <p class="text-xs text-slate-300">Experiencing sunset along the shoreline, ocean breeze, and coastal field work.</p>
+                        </div>
+                    </div>
+
+                    <!-- Travel Spot 2: Sajek Valley -->
+                    <div class="liquid-card rounded-2xl overflow-hidden border border-white/10 group">
+                        <div class="h-48 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Sajek Valley" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <span class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-mono text-pink-300 border border-pink-400/30">
+                                <i class="fa-solid fa-location-dot text-pink-400 mr-1"></i> Sajek Valley
+                            </span>
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <h3 class="text-lg font-bold text-white">Sajek Cloud Valley</h3>
+                            <p class="text-xs text-slate-300">Trekking through hill peaks surrounded by floating clouds and mountain breezes.</p>
+                        </div>
+                    </div>
+
+                    <!-- Travel Spot 3: Sylhet & Jaflong -->
+                    <div class="liquid-card rounded-2xl overflow-hidden border border-white/10 group">
+                        <div class="h-48 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1511497584788-8767611136f6?auto=format&fit=crop&w=600&q=80" alt="Sylhet" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <span class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-mono text-purple-300 border border-purple-400/30">
+                                <i class="fa-solid fa-location-dot text-purple-400 mr-1"></i> Sylhet & Jaflong
+                            </span>
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <h3 class="text-lg font-bold text-white">Tea Gardens & Streams</h3>
+                            <p class="text-xs text-slate-300">Navigating green tea estates, natural stone rivers, and fresh water streams.</p>
+                        </div>
+                    </div>
+
+                    <!-- Travel Spot 4: Rangamati -->
+                    <div class="liquid-card rounded-2xl overflow-hidden border border-white/10 group">
+                        <div class="h-48 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=600&q=80" alt="Rangamati" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <span class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-mono text-emerald-300 border border-emerald-400/30">
+                                <i class="fa-solid fa-location-dot text-emerald-400 mr-1"></i> Rangamati
+                            </span>
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <h3 class="text-lg font-bold text-white">Kaptai Lake & Hanging Bridge</h3>
+                            <p class="text-xs text-slate-300">Boat journeys across Kaptai lake and exploring indigenous hill district culture.</p>
+                        </div>
+                    </div>
+
+                    <!-- Travel Spot 5: Bandarban -->
+                    <div class="liquid-card rounded-2xl overflow-hidden border border-white/10 group">
+                        <div class="h-48 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80" alt="Bandarban" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <span class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-mono text-amber-300 border border-amber-400/30">
+                                <i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> Bandarban
+                            </span>
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <h3 class="text-lg font-bold text-white">Nilgiri & Chimbuk Hill</h3>
+                            <p class="text-xs text-slate-300">High-altitude mountain expeditions and breathtaking valley views.</p>
+                        </div>
+                    </div>
+
+                    <!-- Travel Spot 6: Saint Martin's Island -->
+                    <div class="liquid-card rounded-2xl overflow-hidden border border-white/10 group">
+                        <div class="h-48 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80" alt="Saint Martin" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <span class="absolute top-3 right-3 bg-slate-950/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-mono text-blue-300 border border-blue-400/30">
+                                <i class="fa-solid fa-location-dot text-blue-400 mr-1"></i> Saint Martin's
+                            </span>
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <h3 class="text-lg font-bold text-white">Coral Island Coral Sea</h3>
+                            <p class="text-xs text-slate-300">Blue ocean waters, coconut groves, and tranquil coral island atmosphere.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= ABOUT ME PAGE ================= -->
+        <div id="tab-about" class="tab-content hidden space-y-10">
+            <div class="liquid-card rounded-3xl p-6 sm:p-10 border border-cyan-500/30 space-y-8">
+                <div class="border-b border-white/10 pb-6">
+                    <h2 class="text-3xl font-extrabold font-outfit text-white">About Me</h2>
+                    <p class="text-sm text-cyan-400 font-mono">Biography, skills & research experience</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Personal Profile Card -->
+                    <div class="liquid-card rounded-2xl p-6 border border-white/10 space-y-4">
+                        <h3 class="font-outfit font-bold text-lg text-white">Profile Overview</h3>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex justify-between border-b border-white/10 pb-2"><span class="text-slate-400">Name:</span> <span class="font-semibold text-white">Sahariya Islam Shuvo</span></li>
+                            <li class="flex justify-between border-b border-white/10 pb-2"><span class="text-slate-400">Specialization:</span> <span class="font-semibold text-cyan-300">Web & Field Tech</span></li>
+                            <li class="flex justify-between border-b border-white/10 pb-2"><span class="text-slate-400">Experience:</span> <span class="font-semibold text-white">4+ Years</span></li>
+                            <li class="flex justify-between border-b border-white/10 pb-2"><span class="text-slate-400">Location:</span> <span class="font-semibold text-white">Dhaka, Bangladesh</span></li>
+                            <li class="flex justify-between border-b border-white/10 pb-2"><span class="text-slate-400">Availability:</span> <span class="font-semibold text-emerald-400">Open to Opportunities</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Detailed Bio -->
+                    <div class="lg:col-span-2 space-y-4 text-slate-300 text-sm leading-relaxed">
+                        <h3 class="font-outfit font-bold text-lg text-white">Professional Journey</h3>
+                        <p>
+                            I am <strong class="text-white">Sahariya Islam Shuvo</strong>, a versatile Web Developer, UI/UX Enthusiast, and Field Operations Specialist. My experience spans full-stack web interface development and large-scale empirical research projects across various districts in Bangladesh.
+                        </p>
+                        <p>
+                            Having worked with prominent research organizations such as <span class="text-cyan-300 font-medium">Luminaries Research Ltd</span>, <span class="text-purple-300 font-medium">Insight Research Ltd</span>, and <span class="text-pink-300 font-medium">Arrowhead Research Ltd</span>, I combine analytical field methodologies with responsive modern web technology.
+                        </p>
+
+                        <!-- Skill Chips -->
+                        <div class="pt-4 space-y-3">
+                            <h4 class="font-outfit text-xs uppercase tracking-wider text-cyan-400 font-bold">Skills & Proficiencies</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 rounded-xl bg-slate-900 border border-cyan-500/30 text-xs font-mono text-cyan-300">HTML5 / CSS3 / JavaScript</span>
+                                <span class="px-3 py-1 rounded-xl bg-slate-900 border border-pink-500/30 text-xs font-mono text-pink-300">Tailwind CSS & Liquid UI</span>
+                                <span class="px-3 py-1 rounded-xl bg-slate-900 border border-purple-500/30 text-xs font-mono text-purple-300">Python / Data Collection</span>
+                                <span class="px-3 py-1 rounded-xl bg-slate-900 border border-emerald-500/30 text-xs font-mono text-emerald-300">Field Operations & Research</span>
+                                <span class="px-3 py-1 rounded-xl bg-slate-900 border border-amber-500/30 text-xs font-mono text-amber-300">UI/UX Layout Design</span>
+                                <span class="px-3 py-1 rounded-xl bg-slate-900 border border-blue-500/30 text-xs font-mono text-blue-300">Survey Tool Setup</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= EDUCATIONAL INFO PAGE ================= -->
+        <div id="tab-education" class="tab-content hidden space-y-8">
+            <div class="liquid-card rounded-3xl p-6 sm:p-10 border border-purple-500/30 space-y-8">
+                <div class="border-b border-white/10 pb-6">
+                    <h2 class="text-3xl font-extrabold font-outfit text-white">Educational Qualifications</h2>
+                    <p class="text-sm text-purple-400 font-mono">Academic degrees & training programs</p>
+                </div>
+
+                <div class="relative border-l-2 border-cyan-500/30 ml-4 sm:ml-6 space-y-8 pl-6 sm:pl-8">
+                    <!-- Degree 1 -->
+                    <div class="relative group">
+                        <div class="absolute -left-[31px] sm:-left-[39px] top-1 w-5 h-5 rounded-full bg-cyan-500 border-4 border-slate-950"></div>
+                        <div class="liquid-card rounded-2xl p-6 border border-white/10 space-y-2">
+                            <span class="text-xs font-mono text-cyan-400 bg-cyan-950/80 px-3 py-1 rounded-full border border-cyan-500/30">Graduated</span>
+                            <h3 class="text-xl font-bold text-white">Bachelor of Science in Computer Science & Engineering</h3>
+                            <p class="text-sm font-semibold text-slate-300">Dhaka International University</p>
+                            <p class="text-xs text-slate-400">Focus on Software Engineering, Web Technologies, Database Systems, and Analytical Research.</p>
+                        </div>
+                    </div>
+
+                    <!-- Degree 2 -->
+                    <div class="relative group">
+                        <div class="absolute -left-[31px] sm:-left-[39px] top-1 w-5 h-5 rounded-full bg-pink-500 border-4 border-slate-950"></div>
+                        <div class="liquid-card rounded-2xl p-6 border border-white/10 space-y-2">
+                            <span class="text-xs font-mono text-pink-400 bg-pink-950/80 px-3 py-1 rounded-full border border-pink-500/30">Higher Secondary</span>
+                            <h3 class="text-xl font-bold text-white">Higher Secondary Certificate (HSC)</h3>
+                            <p class="text-sm font-semibold text-slate-300">Science Group — Dhaka City College</p>
+                            <p class="text-xs text-slate-400">Concentration in Physics, Higher Mathematics, Chemistry, and Computer Fundamentals.</p>
+                        </div>
+                    </div>
+
+                    <!-- Certification -->
+                    <div class="relative group">
+                        <div class="absolute -left-[31px] sm:-left-[39px] top-1 w-5 h-5 rounded-full bg-purple-500 border-4 border-slate-950"></div>
+                        <div class="liquid-card rounded-2xl p-6 border border-white/10 space-y-2">
+                            <span class="text-xs font-mono text-purple-400 bg-purple-950/80 px-3 py-1 rounded-full border border-purple-500/30">Professional Certification</span>
+                            <h3 class="text-xl font-bold text-white">Full Stack Web Development & Survey Tools Training</h3>
+                            <p class="text-sm font-semibold text-slate-300">Professional Development Institute</p>
+                            <p class="text-xs text-slate-400">Hands-on practical training in frontend development frameworks and mobile survey technologies.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PHOTO GALLERY PAGE ================= -->
+        <div id="tab-gallery" class="tab-content hidden space-y-8">
+            <div class="liquid-card rounded-3xl p-6 sm:p-10 border border-pink-500/30 space-y-8">
+                <div class="border-b border-white/10 pb-6">
+                    <h2 class="text-3xl font-extrabold font-outfit text-white">Photo Gallery</h2>
+                    <p class="text-sm text-pink-400 font-mono">Moments captured during field work, travel & technology sessions</p>
+                </div>
+
+                <!-- 3-Column Image Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    <div class="liquid-card rounded-2xl p-3 border border-cyan-400/30 group">
+                        <div class="overflow-hidden rounded-xl h-60 relative">
+                            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" alt="Workstation" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+                                <h4 class="font-bold text-white text-sm">Tech Workstation</h4>
+                                <p class="text-xs text-cyan-300">Frontend & Design Lab</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="liquid-card rounded-2xl p-3 border border-pink-400/30 group">
+                        <div class="overflow-hidden rounded-xl h-60 relative">
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="Research Team" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+                                <h4 class="font-bold text-white text-sm">Team Field Briefing</h4>
+                                <p class="text-xs text-pink-300">Research & Survey Prep</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="liquid-card rounded-2xl p-3 border border-purple-400/30 group">
+                        <div class="overflow-hidden rounded-xl h-60 relative">
+                            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Cox's Bazar" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+                                <h4 class="font-bold text-white text-sm">Cox's Bazar Sea Shore</h4>
+                                <p class="text-xs text-purple-300">Coastal Field Trip</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="liquid-card rounded-2xl p-3 border border-emerald-400/30 group">
+                        <div class="overflow-hidden rounded-xl h-60 relative">
+                            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Sajek Valley" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+                                <h4 class="font-bold text-white text-sm">Sajek Cloud Valley</h4>
+                                <p class="text-xs text-emerald-300">Hill Tract Exploration</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="liquid-card rounded-2xl p-3 border border-amber-400/30 group">
+                        <div class="overflow-hidden rounded-xl h-60 relative">
+                            <img src="https://images.unsplash.com/photo-1511497584788-8767611136f6?auto=format&fit=crop&w=600&q=80" alt="Sylhet" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+                                <h4 class="font-bold text-white text-sm">Sylhet Tea Gardens</h4>
+                                <p class="text-xs text-amber-300">Regional Survey Tour</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="liquid-card rounded-2xl p-3 border border-blue-400/30 group">
+                        <div class="overflow-hidden rounded-xl h-60 relative">
+                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Coding Setup" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+                                <h4 class="font-bold text-white text-sm">Application Interface</h4>
+                                <p class="text-xs text-blue-300">Modern Layout Development</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= CV / RESUME PAGE ================= -->
+        <div id="tab-cv" class="tab-content hidden space-y-8">
+            <div class="liquid-card rounded-3xl p-6 sm:p-10 border border-cyan-500/30 space-y-8">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-6">
+                    <div>
+                        <h2 class="text-3xl font-extrabold font-outfit text-white">Curriculum Vitae (CV)</h2>
+                        <p class="text-sm text-cyan-400 font-mono">Professional Resume Preview for Sahariya Islam Shuvo</p>
+                    </div>
+                    
+                    <!-- Dedicated Download & Print CV Buttons -->
+                    <div class="flex items-center space-x-3">
+                        <button onclick="downloadCV()" class="liquid-glass-btn px-5 py-2.5 rounded-xl bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 font-bold flex items-center gap-2 text-xs">
+                            <i class="fa-solid fa-download"></i>
+                            <span>Download CV (.TXT)</span>
+                        </button>
+                        <button onclick="window.print()" class="liquid-glass-btn px-4 py-2.5 rounded-xl text-slate-300 hover:text-white text-xs font-semibold flex items-center gap-2">
+                            <i class="fa-solid fa-print"></i>
+                            <span>Print</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Printable CV Document Container -->
+                <div class="bg-slate-950/90 border border-white/15 rounded-2xl p-6 sm:p-10 text-slate-200 space-y-8 max-w-4xl mx-auto shadow-2xl">
+                    <!-- CV Header -->
+                    <div class="border-b border-white/10 pb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                        <div>
+                            <h1 class="text-3xl font-extrabold text-white font-outfit">SAHARIYA ISLAM SHUVO</h1>
+                            <p class="text-cyan-400 font-mono text-sm">Full Stack Web Developer & Field Research Specialist</p>
+                        </div>
+                        <div class="text-xs font-mono text-slate-300 space-y-1">
+                            <p><i class="fa-solid fa-envelope text-cyan-400 mr-1.5"></i> sahariya.shuvo@gmail.com</p>
+                            <p><i class="fa-solid fa-phone text-cyan-400 mr-1.5"></i> +880 1700-000000</p>
+                            <p><i class="fa-solid fa-location-dot text-cyan-400 mr-1.5"></i> Dhaka, Bangladesh</p>
+                        </div>
+                    </div>
+
+                    <!-- Summary -->
+                    <div class="space-y-2">
+                        <h3 class="text-xs uppercase font-mono tracking-widest text-cyan-400 font-bold">Executive Profile</h3>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            Versatile Web Developer and Field Operations Specialist with expertise in frontend technologies (HTML, CSS, JavaScript, Tailwind CSS), empirical data collection, and managing research logistics for companies such as Luminaries Research Ltd and Insight Research Ltd across Bangladesh.
+                        </p>
+                    </div>
+
+                    <!-- Work Experience -->
+                    <div class="space-y-4">
+                        <h3 class="text-xs uppercase font-mono tracking-widest text-cyan-400 font-bold">Professional Experience</h3>
+                        
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-baseline">
+                                <h4 class="font-bold text-white text-sm">Lead Field & Data Specialist — Luminaries Research Ltd</h4>
+                                <span class="text-xs font-mono text-cyan-300">2023 - Present</span>
+                            </div>
+                            <ul class="list-disc list-inside text-xs text-slate-300 space-y-1">
+                                <li>Supervising digital data collection infrastructure and field logistics across multiple districts.</li>
+                                <li>Ensuring data integrity and technical integration of survey toolkits.</li>
+                            </ul>
+                        </div>
+
+                        <div class="space-y-2 pt-2">
+                            <div class="flex justify-between items-baseline">
+                                <h4 class="font-bold text-white text-sm">Senior Web & Survey Specialist — Insight Research Ltd</h4>
+                                <span class="text-xs font-mono text-purple-300">2022 - 2023</span>
+                            </div>
+                            <ul class="list-disc list-inside text-xs text-slate-300 space-y-1">
+                                <li>Structured interactive survey software and data dashboards for client projects.</li>
+                            </ul>
+                        </div>
+
+                        <div class="space-y-2 pt-2">
+                            <div class="flex justify-between items-baseline">
+                                <h4 class="font-bold text-white text-sm">Field Operations Coordinator — Arrowhead Research Ltd</h4>
+                                <span class="text-xs font-mono text-pink-300">2022</span>
+                            </div>
+                            <ul class="list-disc list-inside text-xs text-slate-300 space-y-1">
+                                <li>Coordinated cross-district research teams and reported daily empirical metrics.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Education -->
+                    <div class="space-y-2">
+                        <h3 class="text-xs uppercase font-mono tracking-widest text-cyan-400 font-bold">Education</h3>
+                        <div class="flex flex-col sm:flex-row justify-between text-xs gap-1">
+                            <span class="font-semibold text-white">B.Sc. in Computer Science & Engineering — Dhaka International University</span>
+                            <span class="font-mono text-slate-400">Dhaka, Bangladesh</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= CONTACT ME PAGE ================= -->
+        <div id="tab-contact" class="tab-content hidden space-y-8">
+            <div class="liquid-card rounded-3xl p-6 sm:p-10 border border-emerald-500/30 space-y-8">
+                <div class="border-b border-white/10 pb-6">
+                    <h2 class="text-3xl font-extrabold font-outfit text-white">Contact Me</h2>
+                    <p class="text-sm text-emerald-400 font-mono">Get in touch via Gmail, Phone or direct social media handles</p>
+                </div>
+
+                <!-- Top Social Profile Buttons -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <a href="https://facebook.com" target="_blank" rel="noopener" class="liquid-glass-btn p-4 rounded-2xl flex items-center justify-center space-x-3 text-blue-400 hover:text-white border border-blue-500/30">
+                        <i class="fa-brands fa-facebook-f text-xl"></i>
+                        <span class="font-bold text-sm">Facebook Profile</span>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener" class="liquid-glass-btn p-4 rounded-2xl flex items-center justify-center space-x-3 text-pink-400 hover:text-white border border-pink-500/30">
+                        <i class="fa-brands fa-instagram text-xl"></i>
+                        <span class="font-bold text-sm">Instagram Profile</span>
+                    </a>
+                    <a href="https://wa.me/8801700000000" target="_blank" rel="noopener" class="liquid-glass-btn p-4 rounded-2xl flex items-center justify-center space-x-3 text-emerald-400 hover:text-white border border-emerald-500/30">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        <span class="font-bold text-sm">WhatsApp Chat</span>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-4">
+                    <!-- Direct Contact Information -->
+                    <div class="space-y-6">
+                        <div class="liquid-card rounded-2xl p-6 border border-white/10 flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-cyan-950/80 border border-cyan-500/40 flex items-center justify-center text-cyan-400 text-xl">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 font-mono uppercase">Gmail Address</p>
+                                <p class="text-sm sm:text-base font-bold text-white">sahariya.shuvo@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="liquid-card rounded-2xl p-6 border border-white/10 flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-950/80 border border-emerald-500/40 flex items-center justify-center text-emerald-400 text-xl">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 font-mono uppercase">Phone Number</p>
+                                <p class="text-sm sm:text-base font-bold text-white">+880 1700-000000</p>
+                            </div>
+                        </div>
+
+                        <div class="liquid-card rounded-2xl p-6 border border-white/10 flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/40 flex items-center justify-center text-purple-400 text-xl">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 font-mono uppercase">Location</p>
+                                <p class="text-sm sm:text-base font-bold text-white">Dhaka, Bangladesh</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direct Contact Form -->
+                    <form onsubmit="handleFormSubmit(event)" class="liquid-card rounded-2xl p-6 border border-white/10 space-y-4">
+                        <h3 class="font-outfit font-bold text-white text-base mb-2">Send Message</h3>
+                        
+                        <div>
+                            <label class="block text-xs font-mono text-slate-300 mb-1">Your Name</label>
+                            <input type="text" required placeholder="Name" class="w-full bg-slate-900/90 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-400">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-mono text-slate-300 mb-1">Email (Gmail)</label>
+                            <input type="email" required placeholder="example@gmail.com" class="w-full bg-slate-900/90 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-400">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-mono text-slate-300 mb-1">Message</label>
+                            <textarea rows="4" required placeholder="Write your message here..." class="w-full bg-slate-900/90 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-400 resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full liquid-glass-btn py-3 rounded-xl bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 border border-emerald-400/50 text-white font-bold text-sm">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 bg-slate-950/90 backdrop-blur-md py-6 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <p class="text-xs sm:text-sm text-slate-400 font-mono">
+                All rights reserved © <span class="text-cyan-400 font-semibold">Sahariya islam shuvo</span>
+            </p>
+            <div class="flex items-center space-x-4 text-xs text-slate-400 font-mono">
+                <span>Liquid Glass</span> • <span>Cyberpunk</span> • <span>Glassmorphism</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification Toast Element -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 border border-cyan-400/60 backdrop-blur-md px-5 py-3 rounded-2xl text-xs font-mono text-white shadow-2xl flex items-center space-x-3 transform translate-y-24 opacity-0 pointer-events-none z-50 transition-all duration-300">
+        <i id="toast-icon" class="fa-solid fa-circle-check text-cyan-400 text-lg"></i>
+        <span id="toast-message">Action completed successfully!</span>
+    </div>
+
+    <script>
+        // Automatic Typewriter lines (Changes every 2 seconds as requested)
+        const textLines = [
+            "Web Developer & UI/UX Enthusiast",
+            "Field Researcher & Data Specialist",
+            "Freelancer & Tech Explorer",
+            "Passionate Traveler across Bangladesh",
+            "Creative Problem Solver"
+        ];
+        let currentLineIndex = 0;
+        const rotatingTextEl = document.getElementById('rotating-text');
+
+        function updateRotatingText() {
+            if (!rotatingTextEl) return;
+            rotatingTextEl.style.opacity = '0';
+            setTimeout(() => {
+                currentLineIndex = (currentLineIndex + 1) % textLines.length;
+                rotatingTextEl.textContent = textLines[currentLineIndex];
+                rotatingTextEl.style.opacity = '1';
+            }, 300);
+        }
+
+        // Change typewriter line every 2000 ms (2 seconds)
+        setInterval(updateRotatingText, 2000);
+
+        // Single Page Navigation Functionality
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+            });
+
+            const selectedTab = document.getElementById('tab-' + tabId);
+            if (selectedTab) {
+                selectedTab.classList.remove('hidden');
+            }
+
+            const drawer = document.getElementById('side-drawer');
+            if (drawer && !drawer.classList.contains('translate-x-full')) {
+                toggleMenu();
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Hamburger Side Menu Toggle
+        function toggleMenu() {
+            const drawer = document.getElementById('side-drawer');
+            const backdrop = document.getElementById('drawer-backdrop');
+            if (drawer.classList.contains('translate-x-full')) {
+                drawer.classList.remove('translate-x-full');
+                backdrop.classList.remove('hidden');
+            } else {
+                drawer.classList.add('translate-x-full');
+                backdrop.classList.add('hidden');
+            }
+        }
+
+        // Theme Switcher (Liquid Glass, Cyberpunk, Glassmorphism)
+        function setTheme(themeName) {
+            document.body.classList.remove('theme-liquid', 'theme-cyber', 'theme-glass');
+            document.body.classList.add('theme-' + themeName);
+
+            ['liquid', 'cyber', 'glass'].forEach(name => {
+                const btn = document.getElementById('btn-' + name);
+                if (btn) {
+                    if (name === themeName) {
+                        btn.className = "px-3 py-1.5 rounded-lg transition-all bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-semibold";
+                    } else {
+                        btn.className = "px-3 py-1.5 rounded-lg transition-all text-slate-400 hover:text-white";
+                    }
+                }
+            });
+
+            showToast("Theme switched to " + themeName.toUpperCase());
+        }
+
+        // Virtual Download CV Trigger
+        function downloadCV() {
+            showToast("Downloading CV document...", "fa-solid fa-file-arrow-down text-emerald-400");
+            
+            const element = document.createElement("a");
+            const file = new Blob([
+                "===========================================\n" +
+                "SAHARIYA ISLAM SHUVO - CURRICULUM VITAE\n" +
+                "Web Developer & Field Research Specialist\n" +
+                "Email: sahariya.shuvo@gmail.com | Phone: +8801700000000\n" +
+                "===========================================\n\n" +
+                "SUMMARY:\nVersatile Web Developer & Field Research Specialist in Bangladesh.\n\n" +
+                "WORK EXPERIENCE:\n" +
+                "- Lead Field & Data Specialist at Luminaries Research Ltd (2023-Present)\n" +
+                "- Senior Web & Survey Specialist at Insight Research Ltd (2022-2023)\n" +
+                "- Field Operations Coordinator at Arrowhead Research Ltd (2022)\n" +
+                "- Technical Web Developer at IRC Research Ltd\n" +
+                "- Research Associate at GRM Research Ltd\n" +
+                "- Field Executive at NSearch Research\n\n" +
+                "EDUCATION:\n- B.Sc. in CSE from Dhaka International University\n"
+            ], {type: 'text/plain'});
+            element.href = URL.createObjectURL(file);
+            element.download = "Sahariya_Islam_Shuvo_CV.txt";
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+
+        // Form Submit Handler
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            showToast("Thank you! Message sent successfully.");
+            event.target.reset();
+        }
+
+        // Toast Notification Helper
+        function showToast(message, iconClass = "fa-solid fa-circle-check text-cyan-400") {
+            const toast = document.getElementById('toast');
+            const msgEl = document.getElementById('toast-message');
+            const iconEl = document.getElementById('toast-icon');
+
+            msgEl.textContent = message;
+            iconEl.className = iconClass + " text-lg";
+
+            toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
+```
